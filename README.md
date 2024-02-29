@@ -15,9 +15,13 @@ To install CDK, first install NodeJS ([more instructions](https://nodejs.org/en/
 ```bash
 npm install -g aws-cdk
 ```
-To install Cargo, go to [Rustup](https://rustup.rs/) and follow the installation instructions. Once complete, also install the Cargo Lambda plugin to be able to build the Rust Lambda function:
+
+TODO install gcc - yum install gcc should be fine
+
+To install Cargo, go to [Rustup](https://rustup.rs/) and follow the installation instructions. Once complete, install `gcc` and the Cargo Lambda plugin to be able to build the Rust Lambda function. An example for AL2/CentOS systems is:
 
 ```bash
+sudo yum install -y gcc
 cargo install cargo-lambda
 ```
 
