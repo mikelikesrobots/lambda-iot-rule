@@ -10,26 +10,45 @@ There are two handler functions which perform identical tasks. One is written in
 
 The tools required are CDK and the Cargo package manager. These can be installed as follows:
 
-To install CDK, first install NodeJS ([more instructions](https://nodejs.org/en/download/package-manager)), then execute:
+To install CDK, first install NodeJS ([more instructions](https://nodejs.org/en/download/package-manager)). AL2 systems can install using `sudo yum install npm`. Then execute:
 
 ```bash
-npm install -g aws-cdk
+sudo npm install -g aws-cdk
 ```
 
-TODO install gcc - yum install gcc should be fine
-
-To install Cargo, go to [Rustup](https://rustup.rs/) and follow the installation instructions. Once complete, install `gcc` and the Cargo Lambda plugin to be able to build the Rust Lambda function. An example for AL2/CentOS systems is:
+To install the Rust dependencies, you will require Rust (use [Rustup](https://rustup.rs/)) and Cargo Lambda. Cargo Lambda may be installed in several ways, but the easiest is with Pip. For an AL2 system, this can be accomplished with:
 
 ```bash
+# Install rust with default options
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Add to current shell
+source "$HOME/.cargo/env"
+# Install Python's package manager
+sudo yum install -y python3-pip
+# Install Cargo Lambda
+pip3 install cargo-lambda
+# Install gcc for linking
 sudo yum install -y gcc
-cargo install cargo-lambda
+```
+
+## Clone the package
+
+If you haven't already, you can clone this package using:
+
+```bash
+# Install git if not present
+sudo yum install -y git
+# Clone package
+git clone https://github.com/mikelikesrobots/lambda-iot-rule
 ```
 
 ## Build and Deploy
 
-Make sure you have AWS credentials activated on your account. You can build and deploy with one command:
+First, make sure you have AWS credentials activated on your account. You can then build the package by entering the directory, installing dependencies, and running the deploy command, as follows:
 
 ```bash
+cd path/to/lambda-iot-rule
+npm install
 npm run deploy
 ```
 
