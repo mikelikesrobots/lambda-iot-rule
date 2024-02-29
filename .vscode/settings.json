@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "${workspaceFolder}/handlers/rust-update-status/Cargo.toml"
+    ]
+}
